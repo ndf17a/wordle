@@ -1,5 +1,7 @@
 # wordle
 wordle solver helper
+words.txt is a dictionary
+-------------------------------------------------
 
 put periods where there would be any a unknown letter
 
