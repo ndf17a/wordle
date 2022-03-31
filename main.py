@@ -4,12 +4,12 @@ import sys
 
 
 def read(regex, idkAr, notIn):
-    with open("words.txt",) as f:
+    with open("words.txt", ) as f:
         lines = f.readlines()
 
         fivers = []
         for line in lines:
-            if len(line) == len(regex)+1:  # this is 5
+            if len(line) == len(regex) + 1:  # this is 5
                 fivers.append(line.lower())
 
         str = ""
@@ -24,14 +24,18 @@ def read(regex, idkAr, notIn):
             if found == len(idkAr):
                 almost.append(word)
 
+        deleteWord = []
         for word in almost:
             for letter in notIn:
                 if letter in word:
-                    print("Removing: ", word, "it contains", letter)
-                    almost.remove(word)
+                    print("Removing: ", word, ": has", letter)
+                    deleteWord.append(word)
                     break
 
-
+        for dWord in deleteWord:
+            for aWord in almost:
+                if dWord is aWord:
+                    almost.remove(aWord)
 
         print("Pattern '" + regex + "' and must also contain the letters'" + ",".join(idkAr) + "' found these words: ")
         print(almost)
